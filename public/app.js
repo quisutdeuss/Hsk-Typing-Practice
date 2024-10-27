@@ -16,39 +16,39 @@ function toggleTheme() {
 let currentWords = [];
 let currentIndex = 0;
 let score = 0;
-let totalWords = 20; // 每轮练习词数
 
 // 加载HSK词汇数据
 async function loadHSKData(level) {
     console.log(`正在加载 HSK ${level} 级词汇...`);
     try {
-        const response = await fetch(`/data/HSK_${level}.json`);  // 修改这里的路径
+        const response = await fetch(`/data/HSK_${level}.json`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(`成功加载 HSK ${level} 级词汇，共 ${data.length} 个词`);
         
-        // 数据验证
-        if (!Array.isArray(data)) {
-            throw new Error('数据格式错误：预期是数组');
+        // 检查数据是否正确加载
+        if (!Array.isArray(data) || data.length === 0) {
+            throw new Error('词库数据格式错误或为空');
         }
         
-        // 随机选择20个词
-        currentWords = shuffleArray(data).slice(0, totalWords);
+        console.log(`成功加载 HSK ${level} 级词汇，共 ${data.length} 个词`);
+        
+        // 使用完整词库并打乱顺序
+        currentWords = shuffleArray([...data]);
         currentIndex = 0;
         score = 0;
+        
+        // 重置统计并显示第一个词
         updateStats();
         showCurrentWord();
         
-        // 启用输入框
         document.getElementById('hanzi-input').disabled = false;
     } catch (error) {
         console.error('加载HSK数据失败:', error);
-        const t = translations[currentLanguage];
         document.querySelector('.word-card').innerHTML = `
-            <div class="hanzi">${t.loadError}</div>
-            <div class="pinyin">${t.checkError}</div>
+            <div class="hanzi">加载失败</div>
+            <div class="pinyin">请检查数据文件: HSK_${level}.json</div>
         `;
     }
 }
@@ -98,10 +98,9 @@ function showCurrentWord() {
 
 // 更新统计信息
 function updateStats() {
-    // 显示正确答案的数量
     document.getElementById('score').textContent = score;
-    // 显示当前是第几个词/总共多少个词
-    document.getElementById('progress').textContent = `${currentIndex + 1}/20`;
+    // 使用实际的词库大小
+    document.getElementById('progress').textContent = `${currentIndex + 1}/${currentWords.length}`;
 }
 
 // 检查答案
@@ -134,7 +133,7 @@ function checkAnswer(input) {
 function showComplete() {
     document.querySelector('.word-card').innerHTML = `
         <div class="hanzi">练习完成!</div>
-        <div class="pinyin">答对 ${score} 个，共 20 个</div>
+        <div class="pinyin">答对 ${score} 个，共 ${currentWords.length} 个</div>
     `;
     document.getElementById('hanzi-input').disabled = true;
 }
@@ -242,7 +241,7 @@ function showError(input, message) {
 function showComplete() {
     document.querySelector('.word-card').innerHTML = `
         <div class="hanzi">练习完成!</div>
-        <div class="pinyin">答对 ${score} 个，共 20 个</div>
+        <div class="pinyin">答对 ${score} 个，共 ${currentWords.length} 个</div>
     `;
     document.getElementById('hanzi-input').disabled = true;
 }
