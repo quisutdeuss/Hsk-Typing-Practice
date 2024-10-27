@@ -9,15 +9,19 @@ class AIChat {
     }
 
     setupEventListeners() {
+        // AI聊天的输入事件
         this.input.addEventListener('input', () => {
             this.submitButton.disabled = !this.input.value.trim();
         });
 
+        // AI聊天的提交事件
         this.submitButton.addEventListener('click', () => this.sendMessage());
         
+        // AI聊天的键盘事件
         this.input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
+                e.stopPropagation(); // 阻止事件冒泡到文档级别
                 this.sendMessage();
             }
         });

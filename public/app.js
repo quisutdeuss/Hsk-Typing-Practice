@@ -107,8 +107,18 @@ function checkAnswer(input) {
         showCurrentWord();
         return true;
     } else {
-        // 显示错误提示
-        showError(input, `正确答案：${currentWord.simplified}`);
+        // 只在打字输入框显示错误提示
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = `正确答案：${currentWord.simplified}`;
+        const inputSection = document.querySelector('.input-section');
+        inputSection.appendChild(errorDiv);
+        
+        // 5秒后移除错误提示
+        setTimeout(() => {
+            errorDiv.remove();
+            document.getElementById('hanzi-input').classList.remove('error');
+        }, 5000);
         return false;
     }
 }
@@ -160,6 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.add('error');
         }
     });
+
+    // 打字练习的键盘事件
+    document.getElementById('hanzi-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // 阻止事件冒泡
+            const input = document.getElementById('hanzi-input');
+            if (!checkAnswer(input.value)) {
+                input.classList.add('error');
+            }
+        }
+    });
 });
 
 // 添加键盘事件支持
@@ -170,80 +191,6 @@ document.addEventListener('keydown', (e) => {
             input.classList.add('error');
         }
     }
-});
-
-// 添加一个新的函数来处理错误提示
-function showError(input, message) {
-    const inputElement = document.getElementById('hanzi-input');
-    inputElement.classList.add('error');
-    
-    // 创建或更新错误提示
-    let errorDiv = document.querySelector('.error-message');
-    if (!errorDiv) {
-        errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        document.querySelector('.input-section').appendChild(errorDiv);
-    }
-    errorDiv.textContent = message;
-    
-    // 5秒后移除错误提示
-    setTimeout(() => {
-        errorDiv.remove();
-        inputElement.classList.remove('error');
-    }, 5000);
-}
-
-// 在文件开头添加
-let currentLanguage = localStorage.getItem('language') || 'zh';
-
-function initLanguage() {
-    document.getElementById('language-select').value = currentLanguage;
-    updatePageText();
-}
-
-function updatePageText() {
-    const t = translations[currentLanguage];
-    
-    // 更新所有需要翻译的文本
-    document.querySelector('h1').textContent = t.title;
-    document.querySelector('.subtitle').textContent = t.subtitle;
-    document.getElementById('hanzi-input').placeholder = t.inputPlaceholder;
-    document.getElementById('submit-btn').textContent = t.submitButton;
-    
-    // 更新统计信息标签
-    const statLabels = document.querySelectorAll('.stat-label');
-    statLabels[0].textContent = t.score;
-    statLabels[1].textContent = t.progress;
-
-    // 如果有错误提示，也更新错误提示
-    const errorMessage = document.querySelector('.error-message');
-    if (errorMessage) {
-        const currentWord = currentWords[currentIndex];
-        errorMessage.textContent = `${t.correctAnswer}${currentWord.simplified}`;
-    }
-
-    // 如果练习已完成，更新完成信息
-    if (currentIndex >= totalWords) {
-        document.querySelector('.word-card').innerHTML = `
-            <div class="hanzi">${t.complete}</div>
-            <div class="pinyin">${t.finalScore}: ${score}/${totalWords}</div>
-        `;
-    }
-}
-
-// 确保在DOMContentLoaded事件中正确初始化语言
-document.addEventListener('DOMContentLoaded', () => {
-    // 初始化语言
-    initLanguage();
-    
-    // 语言切换事件
-    document.getElementById('language-select').addEventListener('change', (e) => {
-        currentLanguage = e.target.value;
-        localStorage.setItem('language', currentLanguage);
-        updatePageText();
-    });
-
-    // ... 其他初始化代码 ...
 });
 
 // 修改showError函数
