@@ -19,6 +19,12 @@ let score = 0;
 
 // 加载HSK词汇数据
 async function loadHSKData(level) {
+    // 显示加载状态
+    document.querySelector('.word-card').innerHTML = `
+        <div class="hanzi">加载中...</div>
+        <div class="pinyin">正在加载 HSK ${level} 级词库</div>
+    `;
+    
     console.log(`正在加载 HSK ${level} 级词汇...`);
     try {
         // 修改文件名逻辑以支持 7+
@@ -80,23 +86,48 @@ function showCurrentWord() {
     }
 
     const word = currentWords[currentIndex];
-    document.querySelector('.hanzi').textContent = word.simplified || '';
     
+    // 修改这部分，保持HTML结构
+    document.querySelector('.word-card').innerHTML = `
+        <div class="hanzi">${word.simplified || ''}</div>
+        <div class="pinyin-container">
+            <div class="pinyin" style="visibility: hidden">${word.forms?.[0]?.transcriptions?.pinyin || ''}</div>
+            <button id="toggle-pinyin" class="toggle-pinyin-btn" title="显示/隐藏拼音">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+    `;
+    
+    // 重新添加拼音切换事件监听
+    const togglePinyinBtn = document.getElementById('toggle-pinyin');
     const pinyinElement = document.querySelector('.pinyin');
-    if (word.forms && word.forms[0] && word.forms[0].transcriptions) {
-        pinyinElement.textContent = word.forms[0].transcriptions.pinyin || '';
-        // 保持当前的可见性状态
+    
+    if (togglePinyinBtn && pinyinElement) {
+        togglePinyinBtn.addEventListener('click', () => {
+            const isVisible = pinyinElement.style.visibility === 'visible';
+            pinyinElement.style.visibility = isVisible ? 'hidden' : 'visible';
+            togglePinyinBtn.classList.toggle('active');
+            localStorage.setItem('showPinyin', !isVisible);
+        });
+
+        // 恢复用户的拼音显示偏好
         const showPinyin = localStorage.getItem('showPinyin') === 'true';
         pinyinElement.style.visibility = showPinyin ? 'visible' : 'hidden';
+        if (showPinyin) {
+            togglePinyinBtn.classList.add('active');
+        }
     }
     
-    // 重置输入框和按钮
+    // 重置输入框
     const input = document.getElementById('hanzi-input');
     const submitBtn = document.getElementById('submit-btn');
     input.value = '';
     input.focus();
     input.classList.remove('error');
-    submitBtn.disabled = true;  // 重置按钮为禁用状态
+    submitBtn.disabled = true;
 }
 
 // 更新统计信息
@@ -134,11 +165,26 @@ function checkAnswer(input) {
 
 // 显示完成信息
 function showComplete() {
+    // 显示完成信息
     document.querySelector('.word-card').innerHTML = `
-        <div class="hanzi">练习完成!</div>
+        <div class="hanzi">本轮练习完成!</div>
         <div class="pinyin">答对 ${score} 个，共 ${currentWords.length} 个</div>
     `;
-    document.getElementById('hanzi-input').disabled = true;
+    
+    // 延迟2秒后重新开始
+    setTimeout(() => {
+        // 重新打乱词库
+        currentWords = shuffleArray([...currentWords]);
+        currentIndex = 0;
+        score = 0;
+        
+        // 更新统计并显示新的词
+        updateStats();
+        showCurrentWord();
+        
+        // 重新启用输入框
+        document.getElementById('hanzi-input').disabled = false;
+    }, 2000);
 }
 
 // 事件监听器
@@ -242,11 +288,26 @@ function showError(input, message) {
 
 // 修改showComplete函数
 function showComplete() {
+    // 显示完成信息
     document.querySelector('.word-card').innerHTML = `
-        <div class="hanzi">练习完成!</div>
+        <div class="hanzi">本轮练习完成!</div>
         <div class="pinyin">答对 ${score} 个，共 ${currentWords.length} 个</div>
     `;
-    document.getElementById('hanzi-input').disabled = true;
+    
+    // 延迟2秒后重新开始
+    setTimeout(() => {
+        // 重新打乱词库
+        currentWords = shuffleArray([...currentWords]);
+        currentIndex = 0;
+        score = 0;
+        
+        // 更新统计并显示新的词
+        updateStats();
+        showCurrentWord();
+        
+        // 重新启用输入框
+        document.getElementById('hanzi-input').disabled = false;
+    }, 2000);
 }
 // 添加语言切换相关代码
 document.addEventListener('DOMContentLoaded', () => {
