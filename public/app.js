@@ -98,8 +98,10 @@ function showCurrentWord() {
 
 // 更新统计信息
 function updateStats() {
+    // 显示正确答案的数量
     document.getElementById('score').textContent = score;
-    document.getElementById('progress').textContent = `${currentIndex}/${totalWords}`;
+    // 显示当前是第几个词/总共多少个词
+    document.getElementById('progress').textContent = `${currentIndex + 1}/20`;
 }
 
 // 检查答案
@@ -132,7 +134,7 @@ function checkAnswer(input) {
 function showComplete() {
     document.querySelector('.word-card').innerHTML = `
         <div class="hanzi">练习完成!</div>
-        <div class="pinyin">最终得分: ${score}/${totalWords}</div>
+        <div class="pinyin">答对 ${score} 个，共 20 个</div>
     `;
     document.getElementById('hanzi-input').disabled = true;
 }
@@ -238,10 +240,9 @@ function showError(input, message) {
 
 // 修改showComplete函数
 function showComplete() {
-    const t = translations[currentLanguage];
     document.querySelector('.word-card').innerHTML = `
-        <div class="hanzi">${t.complete}</div>
-        <div class="pinyin">${t.finalScore}: ${score}/${totalWords}</div>
+        <div class="hanzi">练习完成!</div>
+        <div class="pinyin">答对 ${score} 个，共 20 个</div>
     `;
     document.getElementById('hanzi-input').disabled = true;
 }
