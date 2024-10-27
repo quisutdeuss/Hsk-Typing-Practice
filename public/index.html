@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK 拼音练习</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-controls">
+            <div class="language-switch">
+                <button class="language-btn" id="language-btn">
+                    <span class="lang-icon">文A</span>
+                    <span class="current-lang">中文 (中国)</span>
+                    <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </button>
+                <div class="language-dropdown" id="language-dropdown">
+                    <div class="dropdown-item" data-lang="zh">中文 (中国)</div>
+                    <div class="dropdown-item" data-lang="en">English</div>
+                    <div class="dropdown-item" data-lang="vi">Tiếng Việt</div>
+                </div>
+            </div>
+            <div class="theme-switch">
+                <button id="theme-toggle" aria-label="切换深色模式">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42M12 5a7 7 0 100 14 7 7 0 000-14z"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>HSK 打字练习</h1>
+            <p class="subtitle">提高你的中文打字水平</p>
+        </header>
+
+        <nav class="level-nav">
+            <button class="level-btn active" data-level="1">HSK 1</button>
+            <button class="level-btn" data-level="2">HSK 2</button>
+            <button class="level-btn" data-level="3">HSK 3</button>
+            <button class="level-btn" data-level="4">HSK 4</button>
+            <button class="level-btn" data-level="5">HSK 5</button>
+            <button class="level-btn" data-level="6">HSK 6</button>
+        </nav>
+
+        <main class="practice-section">
+            <div class="card word-card">
+                <div class="hanzi">你好</div>
+                <div class="pinyin">nǐ hǎo</div>
+            </div>
+
+            <div class="input-section">
+                <input type="text" id="hanzi-input" placeholder="输入汉字..." autocomplete="off">
+                <button id="submit-btn" disabled>提交 →</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">得分</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">进度</span>
+                    <span class="stat-value" id="progress">0/20</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- 在 main.practice-section 后面添加 -->
+        <div class="ai-chat-section">
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- 消息会动态插入这里 -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="输入问题..." autocomplete="off">
+                    <button id="chat-submit" disabled>
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/translations.js"></script>
+    <script src="app.js"></script>
+    <!-- 在body结束标签前添加 -->
+    <script src="js/chat.js"></script>
+</body>
+</html>
