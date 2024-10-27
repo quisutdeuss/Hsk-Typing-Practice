@@ -1,5 +1,5 @@
 {
-  "name": "hsk-typing-practice",
+  "name": "hsk-typing",
   "version": "1.0.0",
   "description": "HSK Chinese typing practice application",
   "main": "server.js",
@@ -10,7 +10,6 @@
   "dependencies": {
     "express": "^4.18.2",
     "dotenv": "^16.0.3",
-    "firebase": "^9.0.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

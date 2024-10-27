@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const config = require('./config');
-require('dotenv').config();  // 添加这行
+const fetch = require('node-fetch');  // 添加这行
+require('dotenv').config();
 
 const app = express();
 
