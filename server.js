@@ -14,8 +14,8 @@ app.use((req, res, next) => {
 // 添加JSON解析中间件
 app.use(express.json());
 
-// 服务静态文件
-app.use(express.static('public'));
+// 修改静态文件服务配置
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
 // 添加API代理路由
@@ -45,6 +45,11 @@ app.post('/api/chat', async (req, res) => {
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
+});
+
+// 添加根路由处理
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
