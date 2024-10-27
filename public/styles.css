@@ -551,3 +551,42 @@ h1 {
 #chat-submit:not(:disabled):hover {
     opacity: 0.9;
 }
+
+/* 添加拼音容器和按钮样式 */
+.pinyin-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.toggle-pinyin-btn {
+    padding: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-background);
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.toggle-pinyin-btn:hover {
+    background: var(--hover-color);
+}
+
+.toggle-pinyin-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 修改拼音样式 */
+.pinyin {
+    font-size: 1.2rem;
+    color: #586069;
+    transition: visibility 0.2s;
+}

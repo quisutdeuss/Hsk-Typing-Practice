@@ -78,8 +78,13 @@ function showCurrentWord() {
 
     const word = currentWords[currentIndex];
     document.querySelector('.hanzi').textContent = word.simplified || '';
+    
+    const pinyinElement = document.querySelector('.pinyin');
     if (word.forms && word.forms[0] && word.forms[0].transcriptions) {
-        document.querySelector('.pinyin').textContent = word.forms[0].transcriptions.pinyin || '';
+        pinyinElement.textContent = word.forms[0].transcriptions.pinyin || '';
+        // 保持当前的可见性状态
+        const showPinyin = localStorage.getItem('showPinyin') === 'true';
+        pinyinElement.style.visibility = showPinyin ? 'visible' : 'hidden';
     }
     
     // 重置输入框和按钮
@@ -189,6 +194,25 @@ document.addEventListener('DOMContentLoaded', () => {
             langDropdown.classList.remove('show');
         }
     });
+
+    // 添加拼音显示切换功能
+    const togglePinyinBtn = document.getElementById('toggle-pinyin');
+    const pinyinElement = document.querySelector('.pinyin');
+    
+    togglePinyinBtn.addEventListener('click', () => {
+        const isVisible = pinyinElement.style.visibility === 'visible';
+        pinyinElement.style.visibility = isVisible ? 'hidden' : 'visible';
+        togglePinyinBtn.classList.toggle('active');
+        // 保存用户偏好
+        localStorage.setItem('showPinyin', !isVisible);
+    });
+
+    // 恢复用户的拼音显示偏好
+    const showPinyin = localStorage.getItem('showPinyin') === 'true';
+    pinyinElement.style.visibility = showPinyin ? 'visible' : 'hidden';
+    if (showPinyin) {
+        togglePinyinBtn.classList.add('active');
+    }
 });
 
 // 修改showError函数

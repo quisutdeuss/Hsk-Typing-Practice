@@ -54,7 +54,15 @@
         <main class="practice-section">
             <div class="card word-card">
                 <div class="hanzi">你好</div>
-                <div class="pinyin">nǐ hǎo</div>
+                <div class="pinyin-container">
+                    <div class="pinyin" style="visibility: hidden;">nǐ hǎo</div>
+                    <button id="toggle-pinyin" class="toggle-pinyin-btn" title="显示/隐藏拼音">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <div class="input-section">
