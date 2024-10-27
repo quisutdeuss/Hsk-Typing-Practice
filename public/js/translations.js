@@ -39,3 +39,16 @@ const translations = {
         checkError: 'Vui lòng kiểm tra tệp dữ liệu có tồn tại không'
     }
 };
+
+// 添加更新页面文本的函数
+function updatePageText() {
+    const t = translations[currentLanguage];
+    
+    // 更新所有文本元素
+    document.querySelector('h1').textContent = t.title;
+    document.querySelector('.subtitle').textContent = t.subtitle;
+    document.getElementById('hanzi-input').placeholder = t.inputPlaceholder;
+    document.getElementById('submit-btn').textContent = t.submitButton;
+    document.querySelector('.stat-label:nth-child(1)').textContent = t.score;
+    document.querySelector('.stat-label:nth-child(2)').textContent = t.progress;
+}

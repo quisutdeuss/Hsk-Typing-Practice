@@ -21,7 +21,10 @@ let score = 0;
 async function loadHSKData(level) {
     console.log(`正在加载 HSK ${level} 级词汇...`);
     try {
-        const response = await fetch(`/data/HSK_${level}.json`);
+        // 修改文件名逻辑以支持 7+
+        const fileName = level === '7+' ? 'HSK_7+.json' : `HSK_${level}.json`;
+        const response = await fetch(`/data/${fileName}`);
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -48,7 +51,7 @@ async function loadHSKData(level) {
         console.error('加载HSK数据失败:', error);
         document.querySelector('.word-card').innerHTML = `
             <div class="hanzi">加载失败</div>
-            <div class="pinyin">请检查数据文件: HSK_${level}.json</div>
+            <div class="pinyin">请检查数据文件: ${fileName}</div>
         `;
     }
 }
@@ -245,7 +248,6 @@ function showComplete() {
     `;
     document.getElementById('hanzi-input').disabled = true;
 }
-
 // 添加语言切换相关代码
 document.addEventListener('DOMContentLoaded', () => {
     const langBtn = document.getElementById('language-btn');
@@ -276,3 +278,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
