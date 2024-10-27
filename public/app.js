@@ -154,43 +154,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 输入框事件
-    const input = document.getElementById('hanzi-input');
+    // 打字练习的输入框事件
+    const hanziInput = document.getElementById('hanzi-input');
     const submitBtn = document.getElementById('submit-btn');
 
-    input.addEventListener('input', (e) => {
-        // 当输入框有内容时启用按钮
+    // 输入框内容变化事件
+    hanziInput.addEventListener('input', (e) => {
         submitBtn.disabled = e.target.value.length === 0;
     });
 
-    // 提交按钮事件
-    submitBtn.addEventListener('click', () => {
-        const input = document.getElementById('hanzi-input');
-        if (!checkAnswer(input.value)) {
-            input.classList.add('error');
-        }
-    });
-
-    // 打字练习的键盘事件
-    document.getElementById('hanzi-input').addEventListener('keydown', (e) => {
+    // 打字练习的回车键事件
+    hanziInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // 阻止事件冒泡
-            const input = document.getElementById('hanzi-input');
-            if (!checkAnswer(input.value)) {
-                input.classList.add('error');
+            e.preventDefault();  // 阻止事件冒泡
+            e.stopPropagation(); // 确保不会触发文档级的事件
+            if (hanziInput.value.trim()) {
+                if (!checkAnswer(hanziInput.value)) {
+                    hanziInput.classList.add('error');
+                }
             }
         }
     });
-});
 
-// 添加键盘事件支持
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        const input = document.getElementById('hanzi-input');
-        if (!checkAnswer(input.value)) {
-            input.classList.add('error');
+    // 提交按钮点击事件
+    submitBtn.addEventListener('click', () => {
+        if (!checkAnswer(hanziInput.value)) {
+            hanziInput.classList.add('error');
         }
-    }
+    });
+
+    // 点击外部关闭下拉菜单
+    document.addEventListener('click', (e) => {
+        if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+            langDropdown.classList.remove('show');
+        }
+    });
 });
 
 // 修改showError函数

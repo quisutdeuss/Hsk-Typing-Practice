@@ -17,14 +17,16 @@ class AIChat {
         // AI聊天的提交事件
         this.submitButton.addEventListener('click', () => this.sendMessage());
         
-        // AI聊天的键盘事件
-        this.input.addEventListener('keypress', (e) => {
+        // AI聊天的键盘事件 - 修改这部分
+        this.input.addEventListener('keydown', (e) => {  // 改为 keydown
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                e.stopPropagation(); // 阻止事件冒泡到文档级别
-                this.sendMessage();
+                e.stopPropagation();
+                if (this.input.value.trim()) {
+                    this.sendMessage();
+                }
             }
-        });
+        }, true);  // 添加 true 使用事件捕获
     }
 
     async sendMessage() {
