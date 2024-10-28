@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK 打字练习 - 注册</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-container register-form">
+            <h1>注册账号</h1>
+            <p class="subtitle">创建你的 HSK 打字练习账号</p>
+            
+            <form id="registerForm" onsubmit="event.preventDefault(); validateAndRegister();">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="用户名" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="邮箱" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="密码" required>
+                    <small class="password-hint">
+                        密码要求：<br>
+                        - 至少8个字符<br>
+                        - 至少包含一个大写字母<br>
+                        - 至少包含一个小写字母<br>
+                        - 至少包含一个数字<br>
+                        - 至少包含一个特殊字符 (!@#$%^&*(),.?":{}|<>)
+                    </small>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" placeholder="确认密码" required>
+                </div>
+                <div class="error-message" id="registerError" style="display: none;"></div>
+                <button type="submit" class="primary-btn">创建账号</button>
+                <div class="form-footer">
+                    <p>已有账号？<a href="login.html">立即登录</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

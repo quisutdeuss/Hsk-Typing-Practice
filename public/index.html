@@ -9,6 +9,15 @@
   <body>
     <nav class="top-nav">
       <div class="nav-controls">
+        <!-- 添加左侧的退出登录按钮 -->
+        <div class="logout-section">
+          <div class="user-greeting">
+            <span class="greeting-text"></span>
+            <span id="userName"></span>
+          </div>
+          <button class="logout-btn" onclick="logout()">退出登录</button>
+        </div>
+        <!-- 右侧的语言和主题切换保持不变 -->
         <div class="language-switch">
           <button class="language-btn" id="language-btn">
             <span class="lang-icon">文A</span>
@@ -61,7 +70,8 @@
         <button class="level-btn" data-level="4">HSK 4</button>
         <button class="level-btn" data-level="5">HSK 5</button>
         <button class="level-btn" data-level="6">HSK 6</button>
-        <button class="level-btn" data-level="7+">HSK 7+</button>  <!-- 添加新的按钮 -->
+        <button class="level-btn" data-level="7+">HSK 7+</button>
+        <!-- 添加新的按钮 -->
       </nav>
 
       <main class="practice-section">
@@ -76,7 +86,7 @@
             >
               <svg viewBox="0 0 24 24" width="16" height="16">
                 <path
-                  d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                  d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8z"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
@@ -141,9 +151,13 @@
         </div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/auth.js"></script>
     <script src="app.js"></script>
-    <!-- 在body结束标签前添加 -->
+    <script src="js/chat-config.js"></script>
     <script src="js/chat.js"></script>
   </body>
 </html>

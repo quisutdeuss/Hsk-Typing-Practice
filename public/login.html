@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK 打字练习 - 登录</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-container">
+            <h1>HSK 打字练习</h1>
+            <p class="subtitle">登录以开始练习</p>
+            
+            <form id="loginForm" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="邮箱" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="密码" required>
+                    <a href="#" class="forgot-password" onclick="showResetPassword()">忘记密码？</a>
+                </div>
+                <div class="error-message" id="loginError" style="display: none;"></div>
+                <button onclick="emailLogin(document.getElementById('email').value, document.getElementById('password').value)" class="primary-btn">登录</button>
+                <button onclick="googleLogin()" class="google-btn">
+                    <img src="https://www.google.com/favicon.ico" alt="Google">
+                    使用谷歌账号登录
+                </button>
+                <div class="form-footer">
+                    <p>还没有账号？<a href="register.html">立即注册</a></p>
+                </div>
+            </form>
+
+            <!-- 添加找回密码的弹窗 -->
+            <div id="resetPasswordModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h2>找回密码</h2>
+                    <p>请输入您的注册邮箱，我们将发送重置密码的链接</p>
+                    <div class="form-group">
+                        <input type="email" id="resetEmail" placeholder="请输入邮箱">
+                    </div>
+                    <div class="error-message" id="resetError" style="display: none;"></div>
+                    <div class="modal-buttons">
+                        <button onclick="sendResetEmail()" class="primary-btn">发送重置链接</button>
+                        <button onclick="hideResetPassword()" class="secondary-btn">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,4 +1,26 @@
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+.firebaserc
+firebase.json
+
+# 依赖目录
 node_modules/
-.env
+
+# IDE 和编辑器文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 操作系统文件
 .DS_Store
+Thumbs.db
 *.log
+
+# 开发文档
+HSK.md
+
+# AI 配置
+public/js/chat-config.js

@@ -41,7 +41,8 @@ class AIChat {
         this.submitButton.disabled = true;
 
         try {
-            const response = await fetch('/api/chat', {
+            // 使用本地代理服务器
+            const response = await fetch('http://localhost:3000/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

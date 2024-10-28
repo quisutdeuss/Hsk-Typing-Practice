@@ -1,592 +1,897 @@
 :root {
-    --primary-color: #0366d6;
-    --background-color: #f6f8fa;
-    --card-background: #ffffff;
-    --text-color: #24292e;
-    --border-color: #e1e4e8;
-    --hover-color: #f1f8ff;
+  --primary-color: #0366d6;
+  --background-color: #f6f8fa;
+  --card-background: #ffffff;
+  --text-color: #24292e;
+  --border-color: #e1e4e8;
+  --hover-color: #f1f8ff;
 }
 
 /* 深色模式变量 */
 [data-theme="dark"] {
-    --primary-color: #58a6ff;
-    --background-color: #0d1117;
-    --card-background: #161b22;
-    --text-color: #c9d1d9;
-    --border-color: #30363d;
-    --hover-color: #1f2428;
+  --primary-color: #58a6ff;
+  --background-color: #0d1117;
+  --card-background: #161b22;
+  --text-color: #c9d1d9;
+  --border-color: #30363d;
+  --hover-color: #1f2428;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 .container {
-    margin-top: 80px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2rem 1rem;
+  margin-top: 80px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
 }
 
 header {
-    text-align: center;
-    margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    color: #586069;
+  color: #586069;
 }
 
 .level-nav {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .level-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: var(--card-background);
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
 }
 
 .level-btn:hover {
-    background: var(--hover-color);
+  background: var(--hover-color);
 }
 
 .level-btn.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }
 
 .practice-section {
-    background: var(--card-background);
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    padding: 2rem;
+  background: var(--card-background);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  padding: 2rem;
 }
 
 .word-card {
-    text-align: center;
-    margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .hanzi {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .pinyin {
-    font-size: 1.2rem;
-    color: #586069;
-    margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #586069;
+  margin-bottom: 0.5rem;
 }
 
 .meaning {
-    color: #586069;
-    font-size: 1rem;
+  color: #586069;
+  font-size: 1rem;
 }
 
 .input-section {
-    position: relative;  /* 添加这行，让错误提示的定位相对于这个容器 */
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  position: relative; /* 添加这行，让错误提示的定位相对于这个容器 */
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 #pinyin-input {
-    flex: 1;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 #next-btn {
-    padding: 0.75rem 1.5rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 #next-btn:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 .stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .stat-item {
-    text-align: center;
+  text-align: center;
 }
 
 .stat-label {
-    display: block;
-    color: #586069;
-    font-size: 0.9rem;
+  display: block;
+  color: #586069;
+  font-size: 0.9rem;
 }
 
 .stat-value {
-    font-size: 1.5rem;
-    font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 @media (max-width: 600px) {
-    .container {
-        padding: 1rem;
-    }
-    
-    .practice-section {
-        padding: 1rem;
-    }
-    
-    .hanzi {
-        font-size: 2.5rem;
-    }
-    
-    .input-section {
-        flex-direction: column;
-    }
-    
-    #next-btn {
-        width: 100%;
-    }
+  .container {
+    padding: 1rem;
+  }
+
+  .practice-section {
+    padding: 1rem;
+  }
+
+  .hanzi {
+    font-size: 2.5rem;
+  }
+
+  .input-section {
+    flex-direction: column;
+  }
+
+  #next-btn {
+    width: 100%;
+  }
 }
 
 #hanzi-input {
-    flex: 1;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 #hanzi-input.error {
-    border-color: #dc3545;
-    animation: shake 0.5s;
+  border-color: #dc3545;
+  animation: shake 0.5s;
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 .error-message {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    background-color: #fff;
-    border: 1px solid #dc3545;
-    border-radius: 6px;
-    color: #dc3545;
-    font-size: 0.9rem;
-    text-align: center;
-    animation: fadeIn 0.3s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #dc3545;
+  border-radius: 6px;
+  color: #dc3545;
+  font-size: 0.9rem;
+  text-align: center;
+  animation: fadeIn 0.3s;
 }
 
 @keyframes fadeIn {
-    from { 
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 修改按钮样式 */
 #submit-btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
 }
 
 #submit-btn:disabled {
-    background-color: var(--card-background);
-    color: #999;
-    border: 1px solid var(--border-color);
-    cursor: default;
+  background-color: var(--card-background);
+  color: #999;
+  border: 1px solid var(--border-color);
+  cursor: default;
 }
 
 #submit-btn:not(:disabled) {
-    background: var(--primary-color);
-    color: white;
+  background: var(--primary-color);
+  color: white;
 }
 
 #submit-btn:not(:disabled):hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* 主题切换按钮样式 */
 .theme-switch {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 #theme-toggle {
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
 }
 
 #theme-toggle:hover {
-    background-color: var(--hover-color);
+  background-color: var(--hover-color);
 }
 
 #theme-toggle svg {
-    width: 24px;
-    height: 24px;
-    stroke: var(--text-color);
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  width: 24px;
+  height: 24px;
+  stroke: var(--text-color);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* 深色模式下隐藏太阳图标 */
 [data-theme="dark"] .sun-icon {
-    display: none;
+  display: none;
 }
 
 /* 浅色模式下隐藏月亮图标 */
 [data-theme="light"] .moon-icon {
-    display: none;
+  display: none;
 }
 
 /* 添加到现有CSS中 */
 .top-controls {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 /* 修改顶部控件的样式 */
 .top-controls {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 /* 修改语言切换器的样式 */
 .language-switch {
-    position: absolute;
-    top: 1rem;
-    right: 4rem;  /* 给主题切换按钮留出空间 */
+  position: absolute;
+  top: 1rem;
+  right: 4rem; /* 给主题切换按钮留出间 */
 }
 
 /* 修改主题切换按钮的样式 */
 .theme-switch {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .language-switch select {
-    appearance: none;  /* 移除默认的下拉箭头 */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding: 8px 32px 8px 12px;  /* 右侧留出箭头空间 */
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: var(--card-background);
-    color: var(--text-color);
-    font-size: 0.9rem;
-    cursor: pointer;
-    outline: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    background-size: 16px;
+  appearance: none; /* 移除默认的下拉箭头 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px 32px 8px 12px; /* 右侧留出箭头空间 */
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
 }
 
 .language-switch select:hover {
-    background-color: var(--hover-color);
+  background-color: var(--hover-color);
 }
 
 /* 深色模式下的样式调整 */
 [data-theme="dark"] .language-switch select {
-    background-color: var(--card-background);
-    color: var(--text-color);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c9d1d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-color: var(--card-background);
+  color: var(--text-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c9d1d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 /* 调整导航栏中的控件间距 */
 .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 1rem;
 }
 
 /* 添加顶部导航栏样式 */
 .top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: var(--card-background);
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 2rem;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1000;
 }
 
 .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* 修改语言切换器样式 */
 .language-switch select {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: var(--card-background);
-    color: var(--text-color);
-    font-size: 0.9rem;
-    cursor: pointer;
-    outline: none;
-    height: 36px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  height: 36px;
 }
 
 /* 修改主题切换按钮样式 */
 #theme-toggle {
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card-background);
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-background);
 }
 
 /* 语言切换按钮样式 */
 .language-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--text-color);
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 14px;
 }
 
 .lang-icon {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .current-lang {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 .dropdown-arrow {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 /* 下拉菜单样式 */
 .language-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 4px;
-    min-width: 160px;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  min-width: 160px;
 }
 
 .language-dropdown.show {
-    display: block;
+  display: block;
 }
 
 .dropdown-item {
-    padding: 8px 16px;
-    cursor: pointer;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 .dropdown-item:hover {
-    background: var(--hover-color);
+  background: var(--hover-color);
 }
 
 .dropdown-item.active {
-    background: var(--hover-color);
-    color: var(--primary-color);
+  background: var(--hover-color);
+  color: var(--primary-color);
 }
 
 /* AI聊天框样式 */
 .ai-chat-section {
-    margin-top: 2rem;
-    background: var(--card-background);
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  margin-top: 2rem;
+  background: var(--card-background);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .chat-container {
-    padding: 1rem;
-    max-height: 400px;
-    display: flex;
-    flex-direction: column;
+  padding: 1rem;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1rem;
-    min-height: 200px;
-    max-height: 300px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    margin-bottom: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  min-height: 200px;
+  max-height: 300px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
 
 .message {
-    margin-bottom: 1rem;
-    padding: 0.8rem;
-    border-radius: 6px;
-    max-width: 80%;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border-radius: 6px;
+  max-width: 80%;
 }
 
 .message.user {
-    background: var(--primary-color);
-    color: white;
-    margin-left: auto;
+  background: var(--primary-color);
+  color: white;
+  margin-left: auto;
 }
 
 .message.ai {
-    background: var(--hover-color);
-    color: var(--text-color);
-    margin-right: auto;
+  background: var(--hover-color);
+  color: var(--text-color);
+  margin-right: auto;
 }
 
 .chat-input-area {
-    display: flex;
-    gap: 0.5rem;
-    position: relative;
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
 }
 
 #chat-input {
-    flex: 1;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
-    background: var(--card-background);
-    color: var(--text-color);
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--card-background);
+  color: var(--text-color);
 }
 
 #chat-submit {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    background: var(--primary-color);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
 }
 
 #chat-submit:disabled {
-    background-color: var(--border-color);
-    cursor: not-allowed;
-    opacity: 0.7;
+  background-color: var(--border-color);
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 #chat-submit:not(:disabled):hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* 添加拼音容器和按钮样式 */
 .pinyin-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .toggle-pinyin-btn {
-    padding: 4px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: var(--card-background);
-    color: var(--text-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
 }
 
 .toggle-pinyin-btn:hover {
-    background: var(--hover-color);
+  background: var(--hover-color);
 }
 
 .toggle-pinyin-btn.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }
 
 /* 修改拼音样式 */
 .pinyin {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
+  color: #586069;
+  transition: visibility 0.2s;
+}
+
+/* 修改导航栏布局，使其两端对齐 */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 两端对齐 */
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* 退出登录区域样式 */
+.logout-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-greeting {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.logout-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: var(--hover-color);
+}
+
+/* 添加登录页面样式 */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-background); /* 改为和卡片背景色一致 */
+  padding: 2rem; /* 增加内边距 */
+}
+
+.login-container {
+  background: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  padding: 3rem; /* 增加内边距 */
+  width: 100%;
+  max-width: 600px; /* 增加最大宽度 */
+}
+
+.login-container h1 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.login-container .subtitle {
+  text-align: center;
+  color: #586069;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* 增加表单组之间的间距 */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem; /* 增加输入框内边距 */
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--background-color); /* 改为页面背景色 */
+  color: var(--text-color);
+  font-size: 1.1rem; /* 增加字体大小 */
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 1rem; /* 增加按钮内边距 */
+  font-size: 1.1rem; /* 增加按钮文字大小 */
+  margin-top: 1rem;
+}
+
+.primary-btn:hover {
+  opacity: 0.9;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.google-btn:hover {
+  background: var(--hover-color);
+}
+
+.google-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.form-footer {
+  margin-top: 2rem; /* 增加底部间距 */
+  font-size: 1rem; /* 增加文字大小 */
+}
+
+.form-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background: #ffebe9;
+  border: 1px solid #ff8182;
+  border-radius: 6px;
+  padding: 0.75rem;
+  color: #cf222e;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* 注册页面额外样式 */
+.register-form .password-hint {
+  color: #586069;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* 修改主要按钮样式 */
+.primary-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-color); /* 使用主题蓝色 */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: opacity 0.2s;
+}
+
+.primary-btn:hover {
+  opacity: 0.9;
+}
+
+/* 修改谷歌登录按钮样式 */
+.google-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  transition: background-color 0.2s;
+}
+
+.google-btn:hover {
+  background: var(--hover-color);
+}
+
+/* 修改输入框样式 */
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background); /* 修改为卡片背景色 */
+  color: var(--text-color);
+  font-size: 1.1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color); /* 使用主题蓝色作为焦点边框色 */
+}
+
+/* 修改链接样式 */
+.form-footer a {
+  color: var(--primary-color); /* 使用主题蓝色 */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* 添加找回密码链接样式 */
+.forgot-password {
+    display: block;
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* 弹窗样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
     color: #586069;
-    transition: visibility 0.2s;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+    flex: 1;
+}
+
+.secondary-btn {
+    padding: 0.75rem;
+    background: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.secondary-btn:hover {
+    background: var(--hover-color);
 }
