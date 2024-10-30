@@ -1,6 +1,6 @@
 {
   "rules": {
-    ".read": "auth != null",  // 只有登录用户可以读取
-    ".write": "auth != null"  // 只有登录用户可以写入
+    ".read": "auth != null",  
+    ".write": "auth != null"  
   }
 }

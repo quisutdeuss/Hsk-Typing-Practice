@@ -20,7 +20,29 @@ Thumbs.db
 *.log
 
 # 开发文档
-HSK.md
+docs/DEVELOPMENT_PROGRESS.md
+docs/HSK.md
+docs/TECH_NOTES.md
+docs/CODING_RULES.md
+docs/GIT_NOTES.md
+docs/HSK_UPDATE_20241030.md
+
+# 其他
+example/PanelExampleSeparate.css
+example/PanelExampleSeparate.html
+example/PanelExampleSeparate.js
+
 
 # AI 配置
 public/js/chat-config.js
+
+# 配置文件
+current_version.txt
+
+# 旧版本参考文件
+old/
+old/index.html
+old/styles.css
+old/app.js
+old/login.html
+old/register.html
