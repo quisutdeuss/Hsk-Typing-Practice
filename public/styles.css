@@ -111,10 +111,11 @@ h1 {
 }
 
 .input-section {
-  position: relative; /* 添加这行，让错误提示的定位相对于这个容器 */
+  margin-bottom: 0.25rem;
+  width: 100%;
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 #pinyin-input {
@@ -183,7 +184,7 @@ h1 {
 }
 
 #hanzi-input {
-  flex: 1;
+  width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -291,7 +292,7 @@ h1 {
   stroke-linejoin: round;
 }
 
-/* 深色模式下隐藏太阳图标 */
+/* ���色模式下隐藏太阳图标 */
 [data-theme="dark"] .sun-icon {
   display: none;
 }
@@ -724,7 +725,7 @@ h1 {
 }
 
 .form-footer {
-  margin-top: 2rem; /* 增加底部间距 */
+  margin-top: 2rem; /* 增底部间距 */
   font-size: 1rem; /* 增加文字大小 */
 }
 
@@ -894,4 +895,78 @@ h1 {
 
 .secondary-btn:hover {
     background: var(--hover-color);
+}
+
+.skip-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: #999;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.skip-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.skip-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: #999;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.skip-input:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* 按钮组样式 */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* 统一按钮样式 */
+#skip-btn,
+#history-btn {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  background: var(--card-background);
+  color: var(--text-color);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 44px;
+}
+
+#skip-btn:hover,
+#history-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }

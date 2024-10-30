@@ -14,7 +14,8 @@ const translations = {
         correctAnswer: '正确答案：',
         loadError: '加载失败',
         checkError: '请检查数据文件是否存在',
-        langIcon: "文A"
+        langIcon: "文A",
+        skip: "跳过"
     },
     en: {
         welcome: "Hi! ",    // 英文欢迎语
@@ -31,7 +32,8 @@ const translations = {
         correctAnswer: 'Correct answer: ',
         loadError: 'Loading Failed',
         checkError: 'Please check if data files exist',
-        langIcon: "文A"
+        langIcon: "文A",
+        skip: "Skip"
     },
     vi: {
         welcome: "Xin chào! ",  // 越南语欢迎语
@@ -48,7 +50,8 @@ const translations = {
         correctAnswer: 'Câu trả lời đúng: ',
         loadError: 'Tải thất bại',
         checkError: 'Vui lòng kiểm tra tệp dữ liệu có tồn tại không',
-        langIcon: "文A"
+        langIcon: "文A",
+        skip: "Bỏ qua"
     }
 };
 
@@ -103,6 +106,12 @@ function updatePageText(lang) {
     const langIcon = document.querySelector('.lang-icon');
     if (langIcon) {
         langIcon.textContent = translations[lang].langIcon;
+    }
+
+    // 更新跳过按钮的文本
+    const skipBtn = document.getElementById('skip-btn');
+    if (skipBtn) {
+        skipBtn.textContent = translations[lang].skip;
     }
 }
 
