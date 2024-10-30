@@ -144,6 +144,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .stat-item {
@@ -236,32 +237,6 @@ h1 {
   }
 }
 
-/* 修改按钮样式 */
-#submit-btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
-}
-
-#submit-btn:disabled {
-  background-color: var(--card-background);
-  color: #999;
-  border: 1px solid var(--border-color);
-  cursor: default;
-}
-
-#submit-btn:not(:disabled) {
-  background: var(--primary-color);
-  color: white;
-}
-
-#submit-btn:not(:disabled):hover {
-  opacity: 0.9;
-}
-
 /* 主题切换按钮样式 */
 .theme-switch {
   position: absolute;
@@ -292,7 +267,7 @@ h1 {
   stroke-linejoin: round;
 }
 
-/* ���色模式下隐藏太阳图标 */
+/* 色模式下隐藏太阳图标 */
 [data-theme="dark"] .sun-icon {
   display: none;
 }
@@ -912,26 +887,6 @@ h1 {
 }
 
 .skip-btn:hover {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
-
-.skip-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background: var(--card-background);
-  color: #999;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  transition: all 0.2s;
-}
-
-.skip-input:hover {
   background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);

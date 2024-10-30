@@ -238,6 +238,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // 在这里添加跳过按钮的事件监听
+  const skipBtn = document.getElementById("skip-btn");
+  if (skipBtn) {
+      skipBtn.addEventListener('click', () => {
+      currentIndex++;
+      showCurrentWord();
+      updateStats();
+    });
+  }
+
   // 提交按钮点击事件
   submitBtn.addEventListener("click", () => {
     if (!checkAnswer(hanziInput.value)) {
