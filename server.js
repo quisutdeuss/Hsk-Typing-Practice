@@ -15,24 +15,6 @@ app.use(express.json());
 // 服务静态文件
 app.use(express.static('public'));
 
-// 添加在其他路由之前
-app.get('/data/:filename', (req, res) => {
-    try {
-        const filename = req.params.filename;
-        const filePath = path.join(__dirname, 'public', 'data', filename);
-        
-        // 检查文件是否存在
-        if (fs.existsSync(filePath)) {
-            res.sendFile(filePath);
-        } else {
-            res.status(404).json({ error: 'File not found' });
-        }
-    } catch (error) {
-        console.error('Error reading HSK data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
 // 代理 AI 聊天请求
 app.post('/api/chat', async (req, res) => {
     try {
