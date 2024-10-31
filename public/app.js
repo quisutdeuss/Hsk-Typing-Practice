@@ -125,11 +125,9 @@ function showCurrentWord() {
 
   // 重置输入框
   const input = document.getElementById("hanzi-input");
-  const submitBtn = document.getElementById("submit-btn");
   input.value = "";
   input.focus();
   input.classList.remove("error");
-  submitBtn.disabled = true;
 }
 
 // 更新统计信息
@@ -218,12 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 打字练习的输入框事件
   const hanziInput = document.getElementById("hanzi-input");
-  const submitBtn = document.getElementById("submit-btn");
 
-  // 输入框内容变化事件
-  hanziInput.addEventListener("input", (e) => {
-    submitBtn.disabled = e.target.value.length === 0;
-  });
 
   // 打字练习的回车键事件
   hanziInput.addEventListener("keydown", (e) => {
@@ -246,32 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
       showCurrentWord();
       updateStats();
     });
-  }
-
-  // 提交按钮点击事件
-  submitBtn.addEventListener("click", () => {
-    if (!checkAnswer(hanziInput.value)) {
-      hanziInput.classList.add("error");
-    }
-  });
-
-  // 添加拼音显示切换功能
-  const togglePinyinBtn = document.getElementById("toggle-pinyin");
-  const pinyinElement = document.querySelector(".pinyin");
-
-  togglePinyinBtn.addEventListener("click", () => {
-    const isVisible = pinyinElement.style.visibility === "visible";
-    pinyinElement.style.visibility = isVisible ? "hidden" : "visible";
-    togglePinyinBtn.classList.toggle("active");
-    // 保存用户偏好
-    localStorage.setItem("showPinyin", !isVisible);
-  });
-
-  // 恢复用户的拼音显示偏好
-  const showPinyin = localStorage.getItem("showPinyin") === "true";
-  pinyinElement.style.visibility = showPinyin ? "visible" : "hidden";
-  if (showPinyin) {
-    togglePinyinBtn.classList.add("active");
   }
 });
 
