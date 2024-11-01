@@ -22,7 +22,7 @@ app.post('/api/chat', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY || 'sk-9498af8bc55342db985bc6d0fc68ef35'}`
+                'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`
             },
             body: JSON.stringify({
                 model: "deepseek-chat",
