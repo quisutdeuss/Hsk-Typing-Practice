@@ -149,16 +149,17 @@ function checkAnswer(input) {
     showCurrentWord();
     return true;
   } else {
-    // 只在打字输入框显示错误提示
-    const errorDiv = document.createElement("div");
-    errorDiv.className = "error-message";
-    errorDiv.textContent = `正确答案：${currentWord.simplified}`;
-    const inputSection = document.querySelector(".input-section");
-    inputSection.appendChild(errorDiv);
+    // 使用预设的错误提示元素
+    const errorMessage = document.querySelector(".typing-error-message");
+    errorMessage.textContent = `正确答案：${currentWord.simplified}`;
+    errorMessage.style.display = "block";
 
-    // 5秒后移除错误提示
+    // 添加输入框的错误样式
+    document.getElementById("hanzi-input").classList.add("error");
+
+    // 5秒后隐藏错误提示
     setTimeout(() => {
-      errorDiv.remove();
+      errorMessage.style.display = "none";
       document.getElementById("hanzi-input").classList.remove("error");
     }, 5000);
     return false;
